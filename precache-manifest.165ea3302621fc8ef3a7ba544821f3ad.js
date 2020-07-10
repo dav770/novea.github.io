@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "364dd0ade4c0d5d783b3e3769ee3e6fb",
+    "revision": "518ede01a13e6e1ac4e7e8c05ffe6d22",
     "url": "/dav770/novea.github.io.git/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dav770/novea.github.io.git/static/css/2.fd83e43b.chunk.css"
   },
   {
-    "revision": "e6a3636eb0e48dc283bd",
+    "revision": "5ed8c8e2e673b2ecc55a",
     "url": "/dav770/novea.github.io.git/static/css/main.42591f24.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dav770/novea.github.io.git/static/js/2.0070d880.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e6a3636eb0e48dc283bd",
-    "url": "/dav770/novea.github.io.git/static/js/main.76a8b3fd.chunk.js"
+    "revision": "5ed8c8e2e673b2ecc55a",
+    "url": "/dav770/novea.github.io.git/static/js/main.2494c106.chunk.js"
   },
   {
     "revision": "e7441a8beac663cb449b",
