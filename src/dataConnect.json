@@ -1,0 +1,21 @@
+{
+    "users": [
+        {
+        "id": 1,
+        "name": "roy",
+        "status": false,
+        "avatar": "/src/asset/avatar.png",
+        "email":"roy@hotmail.com",
+        "contactList":[{"name":"Andre",
+                        "email": "andre@io.com"},
+
+                        {"name":"Anne",
+                        "email": "Anne@io.com"},
+
+                        {"name":"Felix",
+                            "email": "Felix@io.com"}],
+        "phone":"01.25.25.25.89",
+        "title":"director"
+    }
+]
+}

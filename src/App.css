@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  padding: 20px 50px;
+}
+
+.borderCadre {
+  border-style: groove;
+  justify-content: center;
+  height: 200px;
+  width: 80%;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.inf-input{
+  align-items: center;
+}
+
+.error-field{
+  border-color: red;
+}
+
+#Mylabel{
+  display: flex !important;
+}
+
+#simul-a:hover {
+  color: red;
+}
+
+#Mylegend{
+  width: 65%;
+}
+
+#space-form{
+  height: 20%;
+}
+
+.inf-note{
+  text-align: justify;
+}
+
+.inf-note2{
+  text-align: center;
+}
+
+.form-check {
+  position: relative;
+  display: flex;
+  padding-left: 1.25rem;
+  /* justify-content: center; */
+  text-align: center;
+  margin-top: 10%;
+}
+
+.row-center{
+  
+  align-self: center;
+}
+
+.Ajust-Image{
+  height: 100px;
+  width: 100px;
+}
+
+fieldset{
+  display: block;
+  width: 80%;
+  height: 200px;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+
+.justifyCenter{
+  justify-content: center;
+}
+
+
+form{
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

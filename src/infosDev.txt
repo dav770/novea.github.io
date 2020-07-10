@@ -1,0 +1,229 @@
+boutton de signUp
+<button
+    type="button"
+    class="btn btn-outline-primary form-control"
+    onClick={this.callLinkedinToConnect}
+>
+    Connect to Linkedin
+</button>
+
+<button
+    type="button"
+    className="btn btn-outline-primary form-control"
+    onClick={this.callGoogleToConnect}
+>
+    Connect to Google
+</button>
+
+
+************* yourdetails ************
+import React, { Component, Fragment } from "react";
+import { LinkedInPopUp } from "react-linkedin-login-oauth2";
+import LinkedinSign from "./LinkedinSign";
+import GoogleLogin from "react-google-login";
+
+class YourDetails extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = this.props.leState
+        console.log("state passe a yourdetails",this.state);
+    }
+
+   
+
+    actionConnect = (valConnect)=>{
+      console.log("retour call back",valConnect);
+      this.setState((state, props) => {
+        let dataConnect = Object.assign({},state.dataConnect) //create copy du state dataConnect
+        dataConnect.status = valConnect //update status with new value
+        return ({dataConnect}); //return new object
+      })
+      
+      this.props.recieveDetails(true)
+        
+      }
+    
+
+  render() {
+    
+console.log('yourdetails',this.state);
+
+
+    return (
+      <Fragment>
+        <div className="row">
+          <div className="col">
+            <GoogleLogin  leState={this.state}></GoogleLogin>
+          </div>
+          <div className="col">
+            <LinkedinSign leState={this.state} recieveLinkedin={this.actionConnect}></LinkedinSign>
+          </div>
+        </div>
+        <div id="space-form"></div>
+        <div className="inf-note2">
+          or signUp by <u><a href="#">Email</a></u>
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+export default YourDetails;
+
+**************************************
+
+
+******************** signUp ***********************
+import React, { Component, Fragment } from "react";
+
+import "../App.css";
+
+import Footer from "./Footer";
+import SideLeft from "./SideLeft";
+
+import YourDetails from "./YourDetails";
+import YourDetailsConfirmConnect from "./YourDetailsConfirmConnect";
+import YourCompagny from "./YourCompagny";
+
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      googleId: null,
+      agreeterms: false,
+      emailValide: false,
+      nameValide: false,
+      warningName: "",
+      warningEmail: "",
+      notYou: false,
+      dataConnect: this.props.dataConnect[0][1][0], //pour test
+    };
+
+    // console.log('4566',this.props.dataConnect[0][1][0])
+  }
+
+  handleBlur = (e) => {
+    console.log("recicve", e);
+    if (e.target.type === "email") {
+      let lastAtPos = e.target.value.lastIndexOf("@");
+      let lastDotPos = e.target.value.lastIndexOf(".");
+
+      if (lastAtPos <= 0 || lastDotPos <= 0) {
+        e.target.classList.add("error-field");
+        this.setState({
+          emailValide: false,
+          warningEmail: "URL format not valid",
+        });
+        return;
+      } else {
+        e.target.classList.remove("error-field");
+        this.setState({
+          emailValide: true,
+          warningEmail: "",
+        });
+        return;
+      }
+    }
+
+    if (e.target.value.length < 3) {
+      e.target.classList.add("error-field");
+      this.setState({ nameValide: false, warningName: "At least 3 chars" });
+    } else {
+      e.target.classList.remove("error-field");
+      this.setState({ nameValide: true, warningName: "" });
+    }
+  };
+
+  actionConnect = (valConnect) => {
+    console.log("retour call back parent", valConnect);
+    this.setState((state, props) => {
+      let dataConnect = Object.assign({}, state.dataConnect); //create copy du state dataConnect
+      dataConnect.status = valConnect; //update status with new value
+      return { dataConnect }; //return new object
+    });
+  };
+
+  componentDidMount(prevProps, prevState, snapshot) {
+    // pour prochaine connexion AJAX
+  }
+
+  render() {
+    const warningLength = "";
+
+    console.log("signup", this.state);
+
+    return (
+      <Fragment>
+        <div className="row justifyCenter">
+          <div className="col-md-4">
+            <SideLeft page="signUp"></SideLeft>
+          </div>
+
+          <div className="col-md-8">
+            <form onSubmit={this.submitForm}>
+              <fieldset>
+                <legend id="Mylegend">Your Compagny detail's:</legend>
+                <YourCompagny
+                  leState={this.state}
+                  handleBlur={this.handleBlur}
+                ></YourCompagny>
+              </fieldset>
+            </form>
+
+            <div id="space-form"></div>
+            <form>
+              <fieldset>
+                <legend id="Mylegend">Your details:</legend>
+
+                {!this.state.dataConnect.status ? (
+                  <YourDetails
+                    leState={this.state}
+                    recieveDetails={this.actionConnect}
+                  />
+                ) : (
+                  <YourDetailsConfirmConnect leState={this.state} />
+                )}
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div className="form-check">
+          <Footer leState={this.state}></Footer>
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+export default SignUp;
+
+***************************************************
+
+
+
+
+
+********* constructor de signup **********************
+constructor(props) {
+    super(props);
+
+    this.state = {
+      googleId: null,
+      agreeterms: false,
+      urlValide: false,
+      nameValide: false,
+      warningName: "",
+      warningUrl: "",
+      notYou: false,
+      emailValide: false,
+      identNameValide: false,
+      warningIdentName: "",
+      warningEmail: "",
+      dataConnect: this.props.dataConnect[0][1][0], //pour test
+    };
+
+    // console.log('4566',this.props.dataConnect[0][1][0])
+  }
+  *****************************************************
