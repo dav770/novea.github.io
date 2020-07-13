@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/dav770/novea.github.io.git/static/css/main.42591f24.chunk.css",
-    "main.js": "/dav770/novea.github.io.git/static/js/main.2494c106.chunk.js",
-    "main.js.map": "/dav770/novea.github.io.git/static/js/main.2494c106.chunk.js.map",
-    "runtime-main.js": "/dav770/novea.github.io.git/static/js/runtime-main.4d91b0db.js",
-    "runtime-main.js.map": "/dav770/novea.github.io.git/static/js/runtime-main.4d91b0db.js.map",
-    "static/css/2.fd83e43b.chunk.css": "/dav770/novea.github.io.git/static/css/2.fd83e43b.chunk.css",
-    "static/js/2.0070d880.chunk.js": "/dav770/novea.github.io.git/static/js/2.0070d880.chunk.js",
-    "static/js/2.0070d880.chunk.js.map": "/dav770/novea.github.io.git/static/js/2.0070d880.chunk.js.map",
-    "index.html": "/dav770/novea.github.io.git/index.html",
-    "precache-manifest.165ea3302621fc8ef3a7ba544821f3ad.js": "/dav770/novea.github.io.git/precache-manifest.165ea3302621fc8ef3a7ba544821f3ad.js",
-    "service-worker.js": "/dav770/novea.github.io.git/service-worker.js",
-    "static/css/2.fd83e43b.chunk.css.map": "/dav770/novea.github.io.git/static/css/2.fd83e43b.chunk.css.map",
-    "static/css/main.42591f24.chunk.css.map": "/dav770/novea.github.io.git/static/css/main.42591f24.chunk.css.map",
-    "static/js/2.0070d880.chunk.js.LICENSE.txt": "/dav770/novea.github.io.git/static/js/2.0070d880.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.ceb26663.chunk.css",
+    "main.js": "/static/js/main.8e37fce3.chunk.js",
+    "main.js.map": "/static/js/main.8e37fce3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e0733921.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e0733921.js.map",
+    "static/css/2.9f0ab9e7.chunk.css": "/static/css/2.9f0ab9e7.chunk.css",
+    "static/js/2.5f2b1182.chunk.js": "/static/js/2.5f2b1182.chunk.js",
+    "static/js/2.5f2b1182.chunk.js.map": "/static/js/2.5f2b1182.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.3d67c60df5488f71cf69623f3b4a78c3.js": "/precache-manifest.3d67c60df5488f71cf69623f3b4a78c3.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.9f0ab9e7.chunk.css.map": "/static/css/2.9f0ab9e7.chunk.css.map",
+    "static/css/main.ceb26663.chunk.css.map": "/static/css/main.ceb26663.chunk.css.map",
+    "static/js/2.5f2b1182.chunk.js.LICENSE.txt": "/static/js/2.5f2b1182.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.4d91b0db.js",
-    "static/css/2.fd83e43b.chunk.css",
-    "static/js/2.0070d880.chunk.js",
-    "static/css/main.42591f24.chunk.css",
-    "static/js/main.2494c106.chunk.js"
+    "static/js/runtime-main.e0733921.js",
+    "static/css/2.9f0ab9e7.chunk.css",
+    "static/js/2.5f2b1182.chunk.js",
+    "static/css/main.ceb26663.chunk.css",
+    "static/js/main.8e37fce3.chunk.js"
   ]
 }
