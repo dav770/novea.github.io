@@ -1,10 +1,51 @@
 body {
+ 
   margin: 0;
   padding: 20px 50px;
 }
 
 .p-rel{
   position: relative;
+}
+
+.widget{
+  
+  margin-top: 5%;
+  padding: 20px 50px;
+}
+.side-left{
+  
+  display: flex;
+  flex-direction: column;
+  border-right-style: solid;
+  border-left: black;
+}
+
+.empty {
+  display: flex;
+  margin: 5px;
+  width: 70%;
+    height: 130%;
+  background-color: gray;
+}
+
+
+.drag {
+  margin-top:25%; 
+  margin-left:50%; 
+  justify-content:center
+  /* width: 100px;
+  height: 100px;
+  background-color: red; */
+}
+
+.side-top{
+  
+  display: flex;
+  flex-direction: row;
+  border-bottom-style: solid;
+  border-left: black;
+ 
 }
 
 .p-abs{
