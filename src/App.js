@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import "./bootstrap.min.css";
 import "./App.css";
 import SignUp from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
+import Forgot from "./components/Forgot";
+import Reset from "./components/Reset";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import dataConnect from "./dataConnect.json";
 import SignIn from "./components/SignIn";
-
+import RedirectValidate from "./components/RedirectValidate";
 
 // composant principal avec State partage
 // definition des routes pour la navigation
@@ -26,32 +30,82 @@ class App extends Component {
       notYou: false,
       emailValide: false,
       identNameValide: false,
+      passwordValide: false,
+      warningPassword: "",
       warningIdentName: "",
       warningEmail: "",
-      dataConnect: [],
+      redirect: null,
+      dataConnect: {},
     };
 
-    this.state.dataConnect = Object.keys(dataConnect).map(function (key) {
-      return [String(key), dataConnect[key]];
-    });
+    this.state.dataConnect = dataConnect;
+
+    // this.state.dataConnect = Object.keys(dataConnect).map(function (key) {
+    //   return [String(key), dataConnect[key]];
+    // });
+
+
+    // dataConnect={this.state.dataConnect[0][1][0]}
   }
 
+  
   render() {
     return (
       <BrowserRouter>
         <Switch>
+          
           <Route
             exact
-            path="/dav770/novea.github.io.git"
+            // path="/dav770/novea.github.io.git"
+            path="/"
             component={() => (
               <SignUp
                 leState={this.state}
-                dataConnect={this.state.dataConnect[0][1][0]}
+               
               />
             )}
           />
 
-          <Route path="/SignIn" component={SignIn} />
+          <Route
+            path="/SignIn"
+            component={() => (
+              <SignIn
+                leState={this.state}
+               
+              />
+            )}
+          />
+
+          <Route
+            path="/Forgot"
+            component={() => (
+              <Forgot
+                leState={this.state}
+               
+              />
+            )}
+          />
+
+          <Route
+            path="/Reset"
+            component={() => (
+              <Reset
+                leState={this.state}
+               
+              />
+            )}
+          />
+
+          <Route
+            path="/Dashboard"
+            component={() => (
+              <Dashboard
+                leState={this.state}
+             
+              />
+            )}
+          />
+
         </Switch>
       </BrowserRouter>
     );

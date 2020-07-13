@@ -1,8 +1,9 @@
 {
-    "users": [
-        {
+    
+        
         "id": 1,
         "name": "roy",
+        "password": "123456",
         "status": false,
         "avatar": "/src/asset/avatar.png",
         "email":"roy@hotmail.com",
@@ -16,6 +17,6 @@
                             "email": "Felix@io.com"}],
         "phone":"01.25.25.25.89",
         "title":"director"
-    }
-]
+    
+
 }

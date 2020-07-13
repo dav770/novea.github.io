@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Redirect } from 'react-dom'
+import { Redirect } from "react-router-dom";
 
-import {MyContext} from './MyContext'
+import { MyContext } from "./MyContext";
 import "../App.css";
 
 import Footer from "./Footer";
@@ -14,39 +14,46 @@ import YourDetailsOtherConnect from "./YourDetailsOtherConnect";
 import YourCompagny from "./YourCompagny";
 import RedirectValidate from "./RedirectValidate";
 
-
 /*
-*pour les tests je passe depuis le composant YourDetails et LinkedinSign le param true pour simuler
-*identification via le bouton Linkedin
-*une cliquer il y a timer de 8sec
-*/
-
+ *pour les tests je passe depuis le composant YourDetails et LinkedinSign le param true pour simuler
+ *identification via le bouton Linkedin
+ *une cliquer il y a timer de 8sec
+ */
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = this.props.leState
-    this.state.dataConnect = this.props.dataConnect
+    this.state = this.props.leState;
+    // this.state.dataConnect = this.props.dataConnect;
     // console.log('4566',this.props.dataConnect[0][1][0])
   }
-
 
   componentDidMount(prevProps, prevState, snapshot) {
     // pour prochaine connexion AJAX
   }
-  
-  callBackValidate = (statusAccount)=>{
-    this.setState((state, props) => {
-      return ({validate: statusAccount}); //return new object
-    })
+
+  componentDidUpdate(prevProps, prevState) {
+    
+    if (this.state.validate) {
+
+      const redirect = setTimeout(() => {
+        this.setState({ redirect: "/SignIn" });
+      }, 5000);
+    }
   }
+
+  callBackValidate = (statusAccount) => {
+    this.setState((state, props) => {
+      return { validate: statusAccount }; 
+      // apres le setState il va render et passer par componentDidUpdate qui remet les valeurs par defaut excepter dataConnect
+    });
+  };
 
 
   handleBlur = (e) => {
     let urlVerif1 = false;
     let urlVerif2 = false;
-
 
     if (e.target.type === "url") {
       const regexp = new RegExp(
@@ -100,103 +107,97 @@ class SignUp extends Component {
     }
 
     if (e.target.type === "text" && e.target.value.length < 3) {
-
       e.target.classList.add("error-field");
-      e.target.name === "nameCompagny" ? (this.setState({ nameValide: false, warningName: "At least 3 chars" })) :  (this.setState({ identNameValide: false, warningIdentName: "At least 3 chars" }))
+      e.target.name === "nameCompagny"
+        ? this.setState({ nameValide: false, warningName: "At least 3 chars" })
+        : this.setState({
+            identNameValide: false,
+            warningIdentName: "At least 3 chars",
+          });
     } else {
       e.target.classList.remove("error-field");
-      e.target.name === "nameCompagny" ? (this.setState({ nameValide: true, warningName: "" })) :  (this.setState({ identNameValide: true, warningIdentName: "" }))
+      e.target.name === "nameCompagny"
+        ? this.setState({ nameValide: true, warningName: "" })
+        : this.setState({ identNameValide: true, warningIdentName: "" });
     }
   };
 
   actionConnect = (locate, valConnect) => {
     if (locate === "YourDetails") {
-     
       this.setState((state, props) => {
         let dataConnect = Object.assign({}, state.dataConnect); //create copy du state dataConnect
         dataConnect.status = valConnect; //update status with new value
-        return { dataConnect }; //return new object
+        return { dataConnect : dataConnect}; //return new object
       });
     }
     if (locate === "YourDetailsConfirmConnect") {
-      
       this.setState((state, props) => {
         return { notYou: true };
       });
     }
   };
 
-
-  componentDidUpdate(prevProps, prevState) {
-
-    console.log("redirect",this.state.validate);
-    if (this.state.validate) {
-      const redirect = setTimeout(()=> {
-      return <Redirect to='/SignIn'/>
-    },10000)
-    }
-  }
-
-
   render() {
     const warningLength = "";
 
-    console.log("signup", this.state);
-    
     return (
       <MyContext.Provider value={this.state}>
-      {!this.state.validate &&
-      <Fragment>
-      
-        <div className="row justifyCenter">
-          <div className="col-md-4">
-            <SideLeft page="signUp"></SideLeft>
-          </div>
+        {this.state.redirect === "/SignIn" && <Redirect to={this.state.redirect} />}
 
-          <div className="col-md-8">
-            <form onSubmit={this.submitForm}>
-              <fieldset>
-                <legend id="Mylegend">Your Compagny detail's:</legend>
-                <YourCompagny
-                  leState={this.state}
-                  handleBlur={this.handleBlur}
-                ></YourCompagny>
-              </fieldset>
-            </form>
+        {!this.state.validate && (
+          <Fragment>
+            <div className="row justifyCenter">
+              <div className="col-md-4">
+                <SideLeft page="signUp"></SideLeft>
+              </div>
 
-            <div id="space-form"></div>
-            <form>
-              <fieldset>
-                <legend id="Mylegend">Your details:</legend>
-                {!this.state.dataConnect.status && !this.state.notYou && (
-                  <YourDetails
-                    leState={this.state}
-                    recieveDetails={this.actionConnect}
-                  />
-                )}
-                {this.state.dataConnect.status && !this.state.notYou && (
-                  <YourDetailsConfirmConnect
-                    leState={this.state}
-                    recieveDetails={this.actionConnect}
-                  />
-                )}
-                {this.state.notYou && (
-                  <YourDetailsOtherConnect leState={this.state} 
-                  handleBlur={this.handleBlur}/>
-                )}
-              </fieldset>
-            </form>
-          </div>
-        </div>
-        <div className="form-check">
-          <Footer leState={this.state} validateAccount={this.callBackValidate}></Footer>
-        </div>
-        
-      </Fragment>
-      }
-      {this.state.validate && <RedirectValidate ></RedirectValidate>}
+              <div className="col-md-8">
+                <form onSubmit={this.submitForm}>
+                  <fieldset>
+                    <legend id="Mylegend">Your Compagny detail's:</legend>
+                    <YourCompagny
+                      leState={this.state}
+                      handleBlur={this.handleBlur}
+                    ></YourCompagny>
+                  </fieldset>
+                </form>
+
+                <div id="space-form"></div>
+                <form>
+                  <fieldset>
+                    <legend id="Mylegend">Your details:</legend>
+                    {!this.state.dataConnect.status && !this.state.notYou && (
+                      <YourDetails
+                        leState={this.state}
+                        recieveDetails={this.actionConnect}
+                      />
+                    )}
+                    {this.state.dataConnect.status && !this.state.notYou && (
+                      <YourDetailsConfirmConnect
+                        leState={this.state}
+                        recieveDetails={this.actionConnect}
+                      />
+                    )}
+                    {this.state.notYou && (
+                      <YourDetailsOtherConnect
+                        leState={this.state}
+                        handleBlur={this.handleBlur}
+                      />
+                    )}
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div className="form-check">
+              <Footer
+                leState={this.state}
+                validateAccount={this.callBackValidate}
+              ></Footer>
+            </div>
+          </Fragment>
+        )}
+        {this.state.validate && <RedirectValidate></RedirectValidate>}
       </MyContext.Provider>
-      
     );
   }
 }

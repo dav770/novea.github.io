@@ -18,7 +18,7 @@ class YourDetails extends Component {
       this.setState((state, props) => {
         let dataConnect = Object.assign({},state.dataConnect) //create copy du state dataConnect
         dataConnect.status = valConnect //update status with new value
-        return ({dataConnect}); //return new object
+        return ({dataConnect: dataConnect}); //return new object
       })
       
       this.props.recieveDetails('YourDetails',true )
@@ -35,7 +35,8 @@ class YourDetails extends Component {
       <Fragment>
         <div className="row">
           <div className="col">
-            <GoogleLogin  leState={this.state}></GoogleLogin>
+            <GoogleLogin  leState={this.state} 
+              recieveLinkedin={this.actionConnect}></GoogleLogin>
           </div>
           <div className="col">
             <LinkedinSign leState={this.state} recieveLinkedin={this.actionConnect}></LinkedinSign>

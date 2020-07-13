@@ -41,7 +41,7 @@ class App extends Component {
 
   render() {
     const { status,  ...rest } = this.props.leState.dataConnect;
-    console.log("Linkedin",status);
+    
     return (
       <div className="App">
 

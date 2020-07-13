@@ -3,6 +3,16 @@ body {
   padding: 20px 50px;
 }
 
+.p-rel{
+  position: relative;
+}
+
+.p-abs{
+  position: absolute;
+  right :0;
+  top:8px
+}
+
 .borderCadre {
   border-style: groove;
   justify-content: center;
@@ -27,8 +37,12 @@ body {
   display: flex !important;
 }
 
-#simul-a:hover {
+#adv-red, #simul-a:hover {
   color: red;
+}
+
+#adv-green{
+  color: green;
 }
 
 #Mylegend{
@@ -88,7 +102,7 @@ fieldset{
 }
 
 
-form{
+form, .place-center{
   display: flex;
   justify-content: center;
 }
@@ -100,6 +114,13 @@ form{
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+
+.col-top-center{
+  display: flex;
+  vertical-align: top;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
