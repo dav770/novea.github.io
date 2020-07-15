@@ -1,57 +1,75 @@
 body {
- 
   margin: 0;
   padding: 20px 50px;
 }
 
-.p-rel{
+.p-rel {
   position: relative;
 }
 
-.widget{
-  
+.widget {
   margin-top: 5%;
   padding: 20px 50px;
 }
-.side-left{
-  
+.side-left {
   display: flex;
   flex-direction: column;
   border-right-style: solid;
   border-left: black;
 }
 
+.select-dom:hover,
+.fix-select-dom {
+  background-color: lightskyblue;
+}
+
+.col-md-12{
+  border-style: none !important;
+  justify-content: left !important;
+}
+
+.modal-content {
+  height: 900px;
+  /* width: 783px !important; */
+}
+
+.drag {
+  margin-top: 23% !important;
+  margin-left: 45% !important;
+}
 .empty {
   display: flex;
   margin: 5px;
   width: 70%;
-    height: 130%;
+  height: 130%;
   background-color: gray;
 }
 
+.empty:hover {
+  border-style: solid;
+  border-color: blue;
+}
 
 .drag {
-  margin-top:25%; 
-  margin-left:50%; 
-  justify-content:center
+  margin-top: 25%;
+  margin-left: 50%;
+  justify-content: center;
   /* width: 100px;
   height: 100px;
   background-color: red; */
 }
 
-.side-top{
-  
+.side-top {
   display: flex;
   flex-direction: row;
   border-bottom-style: solid;
   border-left: black;
- 
 }
 
-.p-abs{
+.p-abs {
   position: absolute;
-  right :0;
-  top:8px
+  right: 0;
+  top: 8px;
 }
 
 .borderCadre {
@@ -66,39 +84,40 @@ body {
   flex-direction: column;
 }
 
-.inf-input{
+.inf-input {
   align-items: center;
 }
 
-.error-field{
+.error-field {
   border-color: red;
 }
 
-#Mylabel{
+#Mylabel {
   display: flex !important;
 }
 
-#adv-red, #simul-a:hover {
+#adv-red,
+#simul-a:hover {
   color: red;
 }
 
-#adv-green{
+#adv-green {
   color: green;
 }
 
-#Mylegend{
+#Mylegend {
   width: 65%;
 }
 
-#space-form{
+#space-form {
   height: 20%;
 }
 
-.inf-note{
+.inf-note {
   text-align: justify;
 }
 
-.inf-note2{
+.inf-note2 {
   text-align: center;
 }
 
@@ -111,39 +130,38 @@ body {
   margin-top: 10%;
 }
 
-.row-center{
-  
+.row-center {
   align-self: center;
 }
 
-.Ajust-Image{
+.Ajust-Image {
   height: 100px;
   width: 100px;
 }
 
-fieldset{
+fieldset {
   display: block;
   width: 80%;
   height: 200px;
-    margin-inline-start: 2px;
-    margin-inline-end: 2px;
-    padding-block-start: 0.35em;
-    padding-inline-start: 0.75em;
-    padding-inline-end: 0.75em;
-    padding-block-end: 0.625em;
-    min-inline-size: min-content;
-    border-width: 2px;
-    border-style: groove;
-    border-color: threedface;
-    border-image: initial;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+  border-width: 2px;
+  border-style: groove;
+  border-color: threedface;
+  border-image: initial;
 }
 
-.justifyCenter{
+.justifyCenter {
   justify-content: center;
 }
 
-
-form, .place-center{
+form,
+.place-center {
   display: flex;
   justify-content: center;
 }
@@ -157,8 +175,7 @@ form, .place-center{
   pointer-events: none;
 }
 
-
-.col-top-center{
+.col-top-center {
   display: flex;
   vertical-align: top;
   justify-content: center;

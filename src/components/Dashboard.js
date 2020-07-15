@@ -1,117 +1,225 @@
-import React, { Component, createRef } from "react";
+import React, { useState, useEffect } from "react";
 import MenuSideLeft from "./MenuSideLeft";
 import TestComponent from "./TestComponent";
+import Modal from "react-modal";
+import PillsJustified from "./PillsJustified";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement("#root");
 
+function Dashboard(props) {
+  const element = [
+    <FontAwesomeIcon icon={["fas", "tachometer-alt"]} />,
+    <FontAwesomeIcon icon={["fas", "flag"]} />,
+    <FontAwesomeIcon icon={["fas", "folder-open"]} />,
+    <FontAwesomeIcon icon={["fas", "random"]} />,
+    <FontAwesomeIcon icon={["fas", "calendar-alt"]} />,
+    <FontAwesomeIcon icon={["fas", "plane"]} />,
+    <FontAwesomeIcon icon={["fas", "utensils"]} />,
+    <FontAwesomeIcon icon={["fas", "bus"]} />,
+    <FontAwesomeIcon icon={["fas", "user-alt"]} />,
+    <FontAwesomeIcon icon={["fas", "user-secret"]} />,
+    <FontAwesomeIcon icon={["fas", "money-bill-alt"]} />,
+    <FontAwesomeIcon icon={["fas", "chart-bar"]} />,
+  ];
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+  const [idxIcon, setIdxIcon] = useState(0);
 
-    this.state = {
-      changeMenu: "",
-      chartbar: '<i class="fas fa-chart-bar"></i>',
-      money: '<i className="far fa-money-bill-alt"></i>',
-      usersecret: '<i class="fas fa-user-secret"></i>',
-      user: '<i class="fas fa-user-alt"></i>',
-      bus: '<i class="fas fa-bus"></i>',
-      ustensil: '<i class="fas fa-utensils"></i>',
-      plane: '<i class="fas fa-plane"></i>',
-      calendar: '<i class="far fa-calendar-alt"></i>',
-      random: '<i class="fas fa-random"></i>',
-      folder: '<i class="fas fa-folder-open"></i>',
-      flag: '<i class="fas fa-flag"></i>',
-      tacho: <i className="fas fa-tachometer-alt"></i>,
-    };
-  }
+  let barIcon = null;
 
-  barIcon = null;
-//   element = <FontAwesomeIcon icon={faCoffee} />
+ 
 
+  const displayIconBar = (currentIcon) => {
+    if (currentIcon == "tachometer-alt") {
+      setIdxIcon(0);
+    }
+    if (currentIcon == "flag") {
+      setIdxIcon(1);
+    }
+    if (currentIcon == "folder-open") {
+      setIdxIcon(2);
+    }
+    if (currentIcon == "random") {
+      setIdxIcon(3);
+    }
+    if (currentIcon == "calendar-alt") {
+      setIdxIcon(4);
+    }
+    if (currentIcon == "plane") {
+      setIdxIcon(5);
+    }
+    if (currentIcon == "utensils") {
+      setIdxIcon(6);
+    }
+    if (currentIcon == "bus") {
+      setIdxIcon(7);
+    }
+    if (currentIcon == "user-alt") {
+      setIdxIcon(8);
+    }
+    if (currentIcon == "user-secret") {
+      setIdxIcon(9);
+    }
+    if (currentIcon == "money-bill-alt") {
+      setIdxIcon(10);
+    }
+    if (currentIcon == "chart-bar") {
+      setIdxIcon(11);
+    }
 
-  displayIconBar = (currentIcon) => {
-   this.barIcon = currentIcon
     // this.setState({ changeMenu: pos });
   };
 
-  render() {
-    this.state.changeMenu == 1 && (this.barIcon = this.state.tacho);
+  const btnModal = (
+    <button
+      type="button"
+      className="btn btn-primary"
+      data-toggle="modal"
+      data-target="#staticBackdrop"
+    >
+      +
+    </button>
+  );
 
-    return (
-      <>
-        <div className="row">
-          <div className="col-xs-6 col-md-1">
-            <div></div>
-
-            <MenuSideLeft displayIconBar={this.displayIconBar} />
+  var displayModal = (
+    <div
+      className="modal fade"
+      id="staticBackdrop"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabIndex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div className=" modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-lg-down">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="staticBackdropLabel">
+              Ajout d'un nouveau Widget
+            </h5>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div className="col-xs-6 col-md-11">
-            <div className="side-top ">
-              <div className="col-xs-5 col-md-3">Icone </div>
-              <div className="col-xs-5 col-md-8" style={{ textAlign: "right" }}>
-                menu
-              </div>
+          <div className="modal-body">
+            <PillsJustified />
+          </div>
+          <div className="modal-footer">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" className="btn btn-primary">
+              {/* validation */}
+              Valider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+    {displayModal}
+      <div className="row">
+        <div className="col-xs-6 col-md-1">
+          <MenuSideLeft displayIconBar={displayIconBar} />
+        </div>
+        <div className="col-xs-6 col-md-11">
+          <div className="side-top ">
+            <div className="col-xs-5 col-md-3">{element[idxIcon]} </div>
+            <div className="col-xs-5 col-md-8" style={{ textAlign: "right" }}>
+              menu
             </div>
- {this.barIcon}
-            <div className="row widget">
-            <div className="col-xs-5 col-md-4" style={{ height:"150px"}}>
-              <div className="empty" >
-              <div className="drag" draggable="true">+</div>
+          </div>
+
+          
+          <div className="row widget">
+            {/* <PillsJustified /> */}
+
+            <div className="col-xs-5 col-md-4" style={{ height: "150px" }}>
+              <div className="empty">
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
-            
-            </div>
-            <div className="row widget">
-            <div className="col-xs-5 col-md-4" style={{ height:"150px"}}>
-              <div className="empty" >
-              <div className="drag" draggable="true">+</div>
+          </div>
+          <div className="row widget">
+            <div className="col-xs-5 col-md-4" style={{ height: "150px" }}>
+              <div className="empty">
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
-            
-            </div>
-            <div className="row widget">
-            <div className="col-xs-5 col-md-4" style={{ height:"150px"}}>
-              <div className="empty" >
-              <div className="drag" draggable="true">+</div>
+          </div>
+          <div className="row widget">
+            <div className="col-xs-5 col-md-4" style={{ height: "150px" }}>
+              <div className="empty">
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
             </div>
             <div className="col-xs-5 col-md-4">
               <div className="empty">
-                <div className="drag" draggable="true">+</div>
+                <div className="drag" draggable="true">
+                  {btnModal}
+                </div>
               </div>
-            </div>
-            
             </div>
           </div>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+  // }
 }
 
 export default Dashboard;

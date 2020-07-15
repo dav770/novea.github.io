@@ -3,6 +3,11 @@ import "./bootstrap.min.css";
 import "./App.css";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
+
+
+import TestComponent from "./components/TestComponent";
+
+
 import Forgot from "./components/Forgot";
 import Reset from "./components/Reset";
 
@@ -12,7 +17,7 @@ import dataConnect from "./dataConnect.json";
 import SignIn from "./components/SignIn";
 import RedirectValidate from "./components/RedirectValidate";
 
-
+import * as mdb from 'mdb-ui-kit';
 
 // composant principal avec State partage
 // definition des routes pour la navigation

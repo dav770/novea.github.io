@@ -3,8 +3,9 @@ import React, { useRef, useState, createRef } from "react";
 function MenuSideLeft(props) {
   const refSvg = useRef(null);
 
-  const handleClickIcon = (e) => {
-    IconTopBar(e.target);
+  const handleClickIcon = (name) => {
+    console.log("e",name);
+    IconTopBar(name);
   };
 
   const IconTopBar = (currentSvg) => {
@@ -27,7 +28,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 576 512"
             height="30px"
             width="30px"
-            onClick={(e) => handleClickIcon(e)}
+            onClick={() => handleClickIcon("tachometer-alt")}
           >
             <path
               fill="currentColor"
@@ -67,7 +68,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 576 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("folder")}
+            onClick={() => handleClickIcon("folder-open")}
           >
             <path
               fill="currentColor"
@@ -107,7 +108,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 448 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("calendar")}
+            onClick={() => handleClickIcon("calendar-alt")}
           >
             <path
               fill="currentColor"
@@ -147,7 +148,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 416 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("ustensil")}
+            onClick={() => handleClickIcon("utensils")}
           >
             <path
               fill="currentColor"
@@ -187,7 +188,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 512 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("user")}
+            onClick={() => handleClickIcon("user-alt")}
           >
             <path
               fill="currentColor"
@@ -207,7 +208,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 448 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("usersecret")}
+            onClick={() => handleClickIcon("user-secret")}
           >
             <path
               fill="currentColor"
@@ -227,7 +228,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 640 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon("money")}
+            onClick={() => handleClickIcon("money-bill-alt")}
           >
             <path
               fill="currentColor"
@@ -247,7 +248,7 @@ function MenuSideLeft(props) {
             viewBox="0 0 512 512"
             height="30px"
             width="30px"
-            onClick={() => handleClickIcon('<i class="fas fa-chart-bar"></i>')}
+            onClick={() => handleClickIcon('chart-bar')}
           >
             <path
               fill="currentColor"

@@ -16,3 +16,28 @@
 //     )
 //     }
 // export default TestComponent
+import React, { Component } from 'react'
+
+export class TestComponent extends Component {
+constructor(props) {
+    super(props)
+
+    this.state = {
+         name:'toto'
+    }
+}
+// let mydip = 
+
+    render() {
+
+
+        return (
+            <div>
+                {console.log('ff',this.state.name)}
+            </div>
+        )
+    }
+}
+
+export default TestComponent
+
