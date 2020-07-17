@@ -29,8 +29,14 @@ body {
 }
 
 .modal-content {
-  height: 900px;
+  height: 800px;
+  width: 1000px;
   /* width: 783px !important; */
+}
+
+.containerModal{
+
+  margin-left: -20px;
 }
 
 .drag {

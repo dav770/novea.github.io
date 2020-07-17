@@ -1,7 +1,10 @@
 import React, { Component, createRef } from "react";
 
 import Modal from "react-modal";
+import { MDBFormInline, MDBInput } from 'mdbreact';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 
 import {
   MDBContainer,
@@ -13,30 +16,70 @@ import {
   MDBNavItem,
   MDBNavLink,
 } from "mdbreact";
-import * as mdb from "mdb-ui-kit";
+
+
+import TestComponent from "./TestComponent";
+import ObjetRadio from "./ObjetRadio";
+import PeriodeRadio from "./PeriodeRadio";
+// import * as mdb from "mdb-ui-kit";
+
+
 class PillsJustified extends Component {
-  state = {
-    items: {
-      default: "1",
+constructor(props) {
+  super(props)
+
+  this.state = this.props.leState
+  this.state.items = {
+    default: "1",
+  }
+
+  this.state.getdom = ''
+  this.state.radio = 0
+  this.state.param = {
+    objetParm: {
+      posObject: 0,
+      valObject: "Commercial",
     },
-    getDom: "",
-    param: {
-      objetParm: {
-        posObject: 0,
-        valObject: "Commercial",
-      },
-      PeriodParm: {
-        posPeriod: 0,
-        valPeriod: "",
-      },
+    PeriodParm: {
+      posPeriod: 0,
+      valPeriod: "",
     },
-  };
+  }
+}
+}
+
+
+
+//   state = {
+//     items: {
+//       default: "1",
+//     },
+//     getDom: "",
+// radio: 0,
+
+
+//     param: {
+//       objetParm: {
+//         posObject: 0,
+//         valObject: "Commercial",
+//       },
+//       PeriodParm: {
+//         posPeriod: 0,
+//         valPeriod: "",
+//       },
+//     },
+//   };
 
   refDomF = createRef(null);
   refDomA = createRef(null);
   refDomS = createRef(null);
 
   myDate = new Date();
+
+
+  majCallBackSte = ()=>{
+
+  }
 
   getDom = (e, dom) => {
     this.refDomF.current.classList.remove("fix-select-dom");
@@ -57,6 +100,13 @@ class PillsJustified extends Component {
     console.log('liste obj', e.target.value);
   }
 
+  onClickBtnRadio = nr => () => {
+    console.log("nr",nr);
+    this.setState({
+      radio: nr
+    });
+  };
+
   togglePills = (type, tab) => (e) => {
     e.preventDefault();
     if (this.state.items[type] !== tab) {
@@ -68,6 +118,12 @@ class PillsJustified extends Component {
     }
   };
 
+
+  majCallBackState = ()=>{
+    //  retour des validations enfants pour MAJ State Parent
+   }
+
+   
   render() {
     return (
       <MDBContainer className="nav-justified">
@@ -186,200 +242,16 @@ class PillsJustified extends Component {
                 </div>
               </MDBTabPane>
               <MDBTabPane tabId="2">
+                
+                    <ObjetRadio leState={this.state} majCallBackSte={this.majCallBackState}/>
+                  {/* </div>
+                </div> */}
                 <div style={{ marginTop: "35px" }}>
-                  1. objet
+                  <PeriodeRadio leState={this.state} majCallBackSte={this.majCallBackState}/>
+                </div>
 
-                  <div className="row">
-                  
-                    <div
-                      className="col-md-12"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        borderStyle: "solid",
-                        borderColor: "#2c3e50",
-                      }}
-                    >
-                      <div className="form-check-inline">
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="ca"
-                            id="ca"
-                          />
-                          <label className="form-check-label" htmlFor="ca2">
-                            CA
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="dep"
-                            id="dep"
-                          />
-                          <label className="form-check-label" htmlFor="dep">
-                            depenses
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="ent"
-                            id="ent"
-                          />
-                          <label className="form-check-label" htmlFor="ent">
-                            Entrees
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="ben"
-                            id="ben"
-                          />
-                          <label className="form-check-label" htmlFor="ben">
-                            Benefices
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="bal"
-                            id="bal"
-                          />
-                          <label className="form-check-label" htmlFor="bal">
-                            Balances
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="perso"
-                            id="perso"
-                            
-                          />
-                          <label className="form-check-label" htmlFor="perso">
-                            Personalise
-                          </label>
-                        </div>
-                        <div className="form-group">
-      <label htmlFor="exampleSelect1">Example select</label>
-      <select className="form-control" id="exampleSelect1" onChange={this.choixListeObj}>
-        <option>Commercial</option>
-        <option>...</option>
-        <option>!!!!</option>
-        
-      </select>
-    </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div style={{ marginTop: "35px" }}>
-                  2. Period
-                  <div className="row">
-                    <div
-                      className="col-md-12"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        borderStyle: "solid",
-                        borderColor: "#2c3e50",
-                      }}
-                    >
-                      <div className="form-check-inline">
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="mc"
-                            id="mc"
-                          />
-                          <label className="form-check-label" htmlFor="mc">
-                            Mois en cours
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="mprev"
-                            id="mprev"
-                          />
-                          <label className="form-check-label" htmlFor="mprev">
-                            Mois previsionnel
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="mperso"
-                            id="mperso"
-                          />
-                          <label className="form-check-label" htmlFor="mperso">
-                            Personalise
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div
-                      className="col-md-12"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        borderStyle: "solid",
-                        borderColor: "#2c3e50",
-                      }}
-                    >
-                      <div className="form-check-inline">
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="anc"
-                            id="anc"
-                            
-                          />
-                          <label className="form-check-label" htmlFor="anc">
-                            Annee en cours
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="anprev"
-                            id="anprev"
-                          />
-                          <label className="form-check-label" htmlFor="anprev">
-                            Annee previsonnelle
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="live"
-                            id="live"
-                          />
-                          <label className="form-check-label" htmlFor="live">
-                            LIVE
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    .
-                  </div>
-                </div>
+
+
               </MDBTabPane>
               <MDBTabPane tabId="3">
                 <p>

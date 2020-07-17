@@ -11,9 +11,10 @@ import './components/fontawesome';
 // import 'mdbreact/dist/css/mdb.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  // </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 

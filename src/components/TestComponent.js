@@ -1,43 +1,43 @@
-// import React from 'react'
-// import { useDrag } from 'react-dnd'
-// // import { ItemTypes } from './Constants'
-
-// function TestComponent({ isDragging, text }) {
-//     const [{ opacity }, dragRef] = useDrag({
-//       item: { type: ItemTypes.CARD, text },
-//       collect: monitor => ({
-//         opacity: monitor.isDragging() ? 0.5 : 1,
-//       }),
-//     })
-//     return (
-//       <div ref={dragRef} style={{ opacity }}>
-//         {text}
-//       </div>
-//     )
-//     }
-// export default TestComponent
 import React, { Component } from 'react'
 
+import { MDBFormInline, MDBInput } from 'mdbreact';
+
+
 export class TestComponent extends Component {
-constructor(props) {
-    super(props)
-
-    this.state = {
-         name:'toto'
-    }
-}
-// let mydip = 
-
-    render() {
-
-
+    state = {
+        radio: 2
+      };
+    
+      onClick = nr => () => {
+          console.log("click",nr);
+        this.setState({
+          radio: nr
+        });
+      };
+    
+      render() {
         return (
-            <div>
-                {console.log('ff',this.state.name)}
-            </div>
-        )
-    }
-}
+            <>
+            <fieldset>
+              <p>
 
+Current employment:<br/>
+
+<input type="radio" name="currentemployment" value="fulltime" /> Full-time<br/>
+
+<input type="radio" name="currentemployment" value="parttime"/> Part-time<br/>
+
+<input type="radio" name="currentemployment" value="notemployed"/> Not employed<br/>
+
+</p>
+            
+          </fieldset>
+
+
+</>
+
+        );
+      }
+    }
 export default TestComponent
 

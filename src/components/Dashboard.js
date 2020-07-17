@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MenuSideLeft from "./MenuSideLeft";
 import TestComponent from "./TestComponent";
 import Modal from "react-modal";
 import PillsJustified from "./PillsJustified";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ModalPage from "./ModalPage";
+
+import { MDBFormInline, MDBInput } from 'mdbreact';
+import * as mdb from "mdb-ui-kit";
+
+
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
 function Dashboard(props) {
+
+  var leState = props.leState
+
   const element = [
     <FontAwesomeIcon icon={["fas", "tachometer-alt"]} />,
     <FontAwesomeIcon icon={["fas", "flag"]} />,
@@ -26,10 +35,19 @@ function Dashboard(props) {
 
   const [idxIcon, setIdxIcon] = useState(0);
 
-  let barIcon = null;
+
+ useEffect(()=>{
+
+ })
+
+
+//  pour test sur page principale, n'est que dans PillsJustifided
+ const majCallBackState = ()=>{
+  //  retour des validations enfants pour MAJ State Parent
+ }
+
 
  
-
   const displayIconBar = (currentIcon) => {
     if (currentIcon == "tachometer-alt") {
       setIdxIcon(0);
@@ -81,56 +99,16 @@ function Dashboard(props) {
       +
     </button>
   );
-
+  
   var displayModal = (
-    <div
-      className="modal fade"
-      id="staticBackdrop"
-      data-backdrop="static"
-      data-keyboard="false"
-      tabIndex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div className=" modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl modal-fullscreen-lg-down">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="staticBackdropLabel">
-              Ajout d'un nouveau Widget
-            </h5>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <PillsJustified />
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              {/* validation */}
-              Valider
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+<ModalPage leState={leState} majCallBackSte={majCallBackState}/>
+  )
+
+
 
   return (
     <>
-    {displayModal}
+    
       <div className="row">
         <div className="col-xs-6 col-md-1">
           <MenuSideLeft displayIconBar={displayIconBar} />
@@ -145,12 +123,13 @@ function Dashboard(props) {
 
           
           <div className="row widget">
-            {/* <PillsJustified /> */}
+
+            <PillsJustified leState={leState} majCallBackSte={majCallBackState}/>
 
             <div className="col-xs-5 col-md-4" style={{ height: "150px" }}>
               <div className="empty">
                 <div className="drag" draggable="true">
-                  {btnModal}
+                {displayModal}
                 </div>
               </div>
             </div>
